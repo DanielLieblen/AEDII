@@ -1,5 +1,6 @@
 package archive;
 
+import questao5.Mapa;
 import util.Grafo;
 
 import java.io.BufferedReader;
@@ -32,5 +33,29 @@ public class LeitorDeArquivoGrafo {
         }
 
         return grafo;
+    }
+
+
+    public static Mapa carregarMapa(String caminhoArquivo) throws IOException {
+        BufferedReader br = new BufferedReader(new FileReader(caminhoArquivo));
+        String origem = br.readLine();  // Lê a primeira linha: Cidade origem
+        String destino = br.readLine();  // Lê a segunda linha: Cidade destino
+
+        Grafo<String> grafo = new Grafo<>();
+
+        String linha;
+        while ((linha = br.readLine()) != null) {
+            String[] partes = linha.split(";");
+            String cidadeA = partes[0].trim();
+            String cidadeB = partes[1].trim();
+            int distancia = Integer.parseInt(partes[2].trim());
+
+            grafo.adicionarVertice(cidadeA);
+            grafo.adicionarVertice(cidadeB);
+            grafo.adicionarArestaPonderada(cidadeA, cidadeB, distancia); // Método que adiciona aresta ponderada
+        }
+        br.close();
+
+        return new Mapa(grafo, origem, destino);
     }
 }

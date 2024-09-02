@@ -1,15 +1,19 @@
 package util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Vertice<T> {
     private T dado;
     private List<Vertice<T>> adjacentes;
+    private Map<Vertice<T>, Integer> arestas;
 
     public Vertice(T dado) {
         this.dado = dado;
         this.adjacentes = new ArrayList<>();
+        this.arestas = new HashMap<>();
     }
 
     public T getDado() {
@@ -26,6 +30,13 @@ public class Vertice<T> {
 
     public List<Vertice<T>> getAdjacentes() {
         return adjacentes;
+    }
+
+    public void adicionarAresta(Vertice<T> destino, int peso) {
+        arestas.put(destino, peso);
+    }
+    public Map<Vertice<T>, Integer> getArestas() {
+        return arestas;
     }
 
     @Override

@@ -1,0 +1,6 @@
+São Paulo
+Rio de Janeiro
+São Paulo;Campinas;100
+Campinas;Rio de Janeiro;400
+São Paulo;Belo Horizonte;580
+Belo Horizonte;Rio de Janeiro;440

@@ -32,6 +32,28 @@ public class Grafo<T> {
         }
     }
 
+    public Map<T, Vertice<T>> getVertices() {
+        return vertices;
+    } //erro
+
+    public Iterable<Vertice<T>> getVertices2() {
+        return vertices.values();
+    } //erro
+
+    public void setVertices(Map<T, Vertice<T>> vertices) {
+        this.vertices = vertices;
+    }
+
+    public void adicionarArestaPonderada(T origem, T destino, int peso) {
+        Vertice<T> verticeOrigem = vertices.get(origem);
+        Vertice<T> verticeDestino = vertices.get(destino);
+        if (verticeOrigem != null && verticeDestino != null) {
+            verticeOrigem.adicionarAresta(verticeDestino, peso);
+        }
+    }
+
+
+
     public void removerAresta(T origem, T destino) {
         Vertice<T> verticeOrigem = vertices.get(origem);
         Vertice<T> verticeDestino = vertices.get(destino);
